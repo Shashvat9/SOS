@@ -118,7 +118,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     cameraManager.turnOnTorchWithStrengthLevel(camaraId,i);
                 } catch (CameraAccessException e) {
-                    throw new RuntimeException(e);
+//                    throw new RuntimeException(e);
+//                    Toast.makeText(MainActivity.this, "Your device don't support this feature", Toast.LENGTH_SHORT).show();
+//                    seekBar.setEnabled(false);
+                }
+                catch (IllegalArgumentException iae){
+                    Toast.makeText(MainActivity.this, "Your device don't support this feature", Toast.LENGTH_SHORT).show();
+                    seekBar.setProgress(1);
+                    seekBar.setEnabled(false);
                 }
                 flash.setText("OFF");
             }
